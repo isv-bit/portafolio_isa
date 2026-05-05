@@ -9,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS extremadamente simétrico y armonioso
+# CSS con cards pequeñas
 st.markdown("""
 <style>
     * {
@@ -18,14 +18,14 @@ st.markdown("""
     }
     
     .main-container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 40px 20px;
     }
     
     .header {
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
     }
     
     .header h1 {
@@ -44,17 +44,17 @@ st.markdown("""
     .cards-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 24px;
+        gap: 16px;
         max-width: 1000px;
         margin: 0 auto;
     }
     
     .card {
         background: white;
-        border-radius: 10px;
-        padding: 16px;
-        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-        border-top: 3px solid #667eea;
+        border-radius: 8px;
+        padding: 12px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        border-top: 2px solid #667eea;
         transition: all 0.3s ease;
         display: flex;
         flex-direction: column;
@@ -62,43 +62,43 @@ st.markdown("""
     }
     
     .card:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-        transform: translateY(-3px);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+        transform: translateY(-2px);
     }
     
     .card-image {
         width: 100%;
-        height: 140px;
+        height: 100px;
         object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 12px;
+        border-radius: 6px;
+        margin-bottom: 8px;
     }
     
     .card-title {
-        font-size: 0.95em;
+        font-size: 0.8em;
         font-weight: 600;
         color: #1a1a1a;
-        margin-bottom: 8px;
-        line-height: 1.3;
-        min-height: 30px;
+        margin-bottom: 5px;
+        line-height: 1.2;
+        min-height: 25px;
     }
     
     .card-description {
-        font-size: 0.8em;
-        color: #888;
-        margin-bottom: 12px;
+        font-size: 0.7em;
+        color: #999;
+        margin-bottom: 8px;
         flex-grow: 1;
-        line-height: 1.4;
+        line-height: 1.3;
     }
     
     .card-button {
         background-color: #667eea;
         color: white;
         border: none;
-        padding: 10px 16px;
-        border-radius: 6px;
+        padding: 6px 10px;
+        border-radius: 5px;
         cursor: pointer;
-        font-size: 0.85em;
+        font-size: 0.7em;
         font-weight: 600;
         text-decoration: none;
         display: block;
@@ -115,14 +115,14 @@ st.markdown("""
     @media (max-width: 1200px) {
         .cards-grid {
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 14px;
         }
     }
     
     @media (max-width: 768px) {
         .cards-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            gap: 12px;
         }
     }
 </style>
@@ -292,7 +292,7 @@ for app in aplicaciones:
         image = Image.open(app['imagen'])
         st.image(image, use_column_width=True)
     except:
-        st.image("https://via.placeholder.com/200x140?text=No+image", use_column_width=True)
+        st.image("https://via.placeholder.com/150x100?text=No+image", use_column_width=True)
     
     # Botón
     st.markdown(f"""
