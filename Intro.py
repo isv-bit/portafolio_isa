@@ -20,7 +20,7 @@ st.markdown("""
     .main-container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 30px 20px;
+        padding: 10px 10px;
     }
     
     .header {
