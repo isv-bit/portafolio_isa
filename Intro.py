@@ -9,7 +9,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS con cards pequeñas
+# CSS con cards muy compactas
 st.markdown("""
 <style>
     * {
@@ -20,40 +20,37 @@ st.markdown("""
     .main-container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 40px 20px;
+        padding: 30px 20px;
     }
     
     .header {
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
     }
     
     .header h1 {
         color: #1a1a1a;
-        font-size: 2.2em;
-        margin-bottom: 8px;
-        letter-spacing: 0.5px;
+        font-size: 2em;
+        margin-bottom: 5px;
     }
     
     .header p {
         color: #666;
-        font-size: 1em;
-        font-weight: 300;
+        font-size: 0.9em;
     }
     
     .cards-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        max-width: 1000px;
+        gap: 12px;
         margin: 0 auto;
     }
     
     .card {
         background: white;
-        border-radius: 8px;
-        padding: 12px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        border-radius: 6px;
+        padding: 8px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
         border-top: 2px solid #667eea;
         transition: all 0.3s ease;
         display: flex;
@@ -62,43 +59,42 @@ st.markdown("""
     }
     
     .card:hover {
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-        transform: translateY(-2px);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+        transform: translateY(-1px);
     }
     
     .card-image {
         width: 100%;
-        height: 100px;
+        height: 80px;
         object-fit: cover;
-        border-radius: 6px;
-        margin-bottom: 8px;
+        border-radius: 4px;
+        margin-bottom: 6px;
     }
     
     .card-title {
-        font-size: 0.8em;
+        font-size: 0.75em;
         font-weight: 600;
         color: #1a1a1a;
-        margin-bottom: 5px;
+        margin-bottom: 3px;
         line-height: 1.2;
-        min-height: 25px;
     }
     
     .card-description {
-        font-size: 0.7em;
+        font-size: 0.65em;
         color: #999;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         flex-grow: 1;
-        line-height: 1.3;
+        line-height: 1.2;
     }
     
     .card-button {
         background-color: #667eea;
         color: white;
         border: none;
-        padding: 6px 10px;
-        border-radius: 5px;
+        padding: 4px 8px;
+        border-radius: 4px;
         cursor: pointer;
-        font-size: 0.7em;
+        font-size: 0.65em;
         font-weight: 600;
         text-decoration: none;
         display: block;
@@ -111,20 +107,6 @@ st.markdown("""
     .card-button:hover {
         background-color: #5568d3;
     }
-    
-    @media (max-width: 1200px) {
-        .cards-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .cards-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -132,20 +114,19 @@ st.markdown("""
 with st.sidebar:
     st.markdown("## 🤖 Sobre la IA")
     st.markdown("""
-    La **Inteligencia Artificial** permite mejorar la toma de decisiones con datos, 
-    automatizar tareas rutinarias y proporcionar análisis avanzados en tiempo real.
+    La **Inteligencia Artificial** permite mejorar la toma de decisiones con datos.
     """)
     
     st.markdown("---")
     st.markdown("## 📚 Recursos")
     url_ia = "https://sites.google.com/view/aplicacionesdeia/inicio"
-    st.markdown(f"[📖 Más ejercicios y recursos]({url_ia})")
+    st.markdown(f"[📖 Más ejercicios]({url_ia})")
 
 # Header
 st.markdown("""
 <div class="header">
-    <h1>🚀 Aplicaciones de Inteligencia Artificial</h1>
-    <p>Explora el poder transformador de la IA</p>
+    <h1>🚀 Aplicaciones de IA</h1>
+    <p>Explora el poder de la inteligencia artificial</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -292,12 +273,12 @@ for app in aplicaciones:
         image = Image.open(app['imagen'])
         st.image(image, use_column_width=True)
     except:
-        st.image("https://via.placeholder.com/150x100?text=No+image", use_column_width=True)
+        st.image("https://via.placeholder.com/150x80?text=No+image", use_column_width=True)
     
     # Botón
     st.markdown(f"""
     <a href="{app['enlace']}" target="_blank" style="text-decoration: none;">
-        <button class="card-button">🔗 Acceder</button>
+        <button class="card-button">Acceder</button>
     </a>
     """, unsafe_allow_html=True)
 
@@ -306,7 +287,7 @@ st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.markdown("""
-<div style="text-align: center; padding: 20px; color: #999; font-size: 0.9em;">
+<div style="text-align: center; padding: 15px; color: #999; font-size: 0.85em;">
     <p>© 2024 Portfolio de Inteligencia Artificial</p>
 </div>
 """, unsafe_allow_html=True)
