@@ -1,7 +1,6 @@
 import streamlit as st
 from PIL import Image
 
-# Configuración de página
 st.set_page_config(
     page_title="Portfolio IA",
     page_icon="🤖",
@@ -9,13 +8,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS limpio y simétrico
 st.markdown("""
 <style>
     .card {
         background: white;
         border-radius: 16px;
-        padding: 16px;
+        padding: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
         height: 100%;
@@ -35,7 +33,7 @@ st.markdown("""
     .card-title {
         font-size: 0.95em;
         font-weight: bold;
-        margin: 8px 0;
+        margin: 2px 0;
         color: #333;
         line-height: 1.3;
     }
@@ -43,7 +41,7 @@ st.markdown("""
     .card-description {
         font-size: 0.8em;
         color: #666;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
         flex-grow: 1;
         line-height: 1.3;
     }
@@ -53,11 +51,11 @@ st.markdown("""
         height: 120px;
         object-fit: cover;
         border-radius: 12px;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
     }
     
     .btn {
-        padding: 8px;
+        padding: 6px;
         border: none;
         border-radius: 8px;
         cursor: pointer;
@@ -99,7 +97,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Sidebar
 with st.sidebar:
     st.markdown("## 🤖 Sobre la IA")
     st.markdown("""
@@ -112,7 +109,6 @@ with st.sidebar:
     url_ia = "https://sites.google.com/view/aplicacionesdeia/inicio"
     st.markdown(f"[📖 Más ejercicios y recursos]({url_ia})")
 
-# Header
 st.markdown("""
 <div class="header">
     <h1>🚀 Aplicaciones de Inteligencia Artificial</h1>
@@ -120,7 +116,6 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Lista de 20 aplicaciones
 aplicaciones = [
     {
         "titulo": "Conversión de Texto a Voz",
@@ -244,7 +239,6 @@ aplicaciones = [
     }
 ]
 
-# Grid de 4 columnas
 cols = st.columns(4)
 
 for idx, app in enumerate(aplicaciones):
@@ -256,14 +250,12 @@ for idx, app in enumerate(aplicaciones):
         </div>
         """, unsafe_allow_html=True)
         
-        # Imagen
         try:
             image = Image.open(app['imagen'])
             st.image(image, use_column_width=True)
         except:
             st.info("📷 Imagen no disponible")
         
-        # Botón
         st.markdown(f"""
         <a href="{app['enlace']}" target="_blank">
             <button class="btn btn-primary">
@@ -272,7 +264,7 @@ for idx, app in enumerate(aplicaciones):
         </a>
         """, unsafe_allow_html=True)
         
-        st.markdown("")  # Espaciador
+        st.markdown("")
 
 st.markdown("---")
 st.markdown("""
