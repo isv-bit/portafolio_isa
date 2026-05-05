@@ -12,7 +12,7 @@ st.markdown("""
 <style>
     .card {
         background: white;
-        border-radius: 16px;
+        border-radius: 12px;
         padding: 8px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
