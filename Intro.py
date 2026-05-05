@@ -9,92 +9,121 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS limpio y simétrico
+# CSS extremadamente simétrico y armonioso
 st.markdown("""
 <style>
-    .card {
-        background: white;
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        border-top: 4px solid #667eea;
-        transition: box-shadow 0.3s ease, transform 0.2s ease;
+    * {
+        margin: 0;
+        padding: 0;
     }
     
-    .card:hover {
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        transform: translateY(-2px);
-    }
-    
-    .card-title {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin: 15px 0;
-        color: #333;
-    }
-    
-    .card-description {
-        font-size: 0.9em;
-        color: #666;
-        margin-bottom: 15px;
-        flex-grow: 1;
-    }
-    
-    .card-image {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 15px;
-    }
-    
-    .btn-container {
-        display: flex;
-        gap: 8px;
-    }
-    
-    .btn {
-        flex: 1;
-        padding: 10px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-weight: bold;
-        text-decoration: none;
-        display: inline-block;
-        transition: all 0.2s;
-    }
-    
-    .btn-primary {
-        background-color: #667eea;
-        color: white;
-    }
-    
-    .btn-primary:hover {
-        background-color: #5568d3;
-        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    .main-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
     }
     
     .header {
         text-align: center;
-        padding: 30px 0;
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
     
     .header h1 {
-        color: #333;
-        font-size: 2.5em;
-        margin-bottom: 10px;
+        color: #1a1a1a;
+        font-size: 2.2em;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
     }
     
     .header p {
         color: #666;
-        font-size: 1.1em;
+        font-size: 1em;
+        font-weight: 300;
+    }
+    
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .card {
+        background: white;
+        border-radius: 10px;
+        padding: 16px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+        border-top: 3px solid #667eea;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    
+    .card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        transform: translateY(-3px);
+    }
+    
+    .card-image {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 12px;
+    }
+    
+    .card-title {
+        font-size: 0.95em;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+        line-height: 1.3;
+        min-height: 30px;
+    }
+    
+    .card-description {
+        font-size: 0.8em;
+        color: #888;
+        margin-bottom: 12px;
+        flex-grow: 1;
+        line-height: 1.4;
+    }
+    
+    .card-button {
+        background-color: #667eea;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.85em;
+        font-weight: 600;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        transition: background-color 0.2s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .card-button:hover {
+        background-color: #5568d3;
+    }
+    
+    @media (max-width: 1200px) {
+        .cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -124,159 +153,160 @@ st.markdown("""
 aplicaciones = [
     {
         "titulo": "Conversión de Texto a Voz",
-        "descripcion": "Transforma textos en audio de alta calidad",
+        "descripcion": "Transforma textos en audio",
         "imagen": "txt_to_audio2.png",
         "enlace": "https://imultimod.streamlit.app/"
     },
     {
         "titulo": "Conversión de Voz a Texto",
-        "descripcion": "Convierte audio en texto con precisión",
+        "descripcion": "Convierte audio en texto",
         "imagen": "OIG8.jpg",
         "enlace": "https://traductorw.streamlit.app/"
     },
     {
         "titulo": "Reconocimiento de Objetos",
-        "descripcion": "Detecta objetos en imágenes con YOLO",
+        "descripcion": "Detecta objetos con YOLO",
         "imagen": "txt_to_audio.png",
         "enlace": "https://yolov5cmc.streamlit.app/"
     },
     {
         "titulo": "Análisis de Imagen",
-        "descripcion": "Análisis visual avanzado con IA",
+        "descripcion": "Análisis visual con IA",
         "imagen": "OIG4.jpg",
         "enlace": "https://vision2-gpt4o.streamlit.app/"
     },
     {
-        "titulo": "Generación en Contexto (RAG)",
-        "descripcion": "Analiza PDFs y responde preguntas",
+        "titulo": "Generación en Contexto",
+        "descripcion": "Analiza PDFs inteligentemente",
         "imagen": "Chat_pdf.png",
         "enlace": "https://chatpdf-cc.streamlit.app/"
     },
     {
         "titulo": "Análisis de Datos",
-        "descripcion": "Análisis inteligente con agentes IA",
+        "descripcion": "Análisis con agentes IA",
         "imagen": "data_analisis.png",
         "enlace": "https://dataagente.streamlit.app/"
     },
     {
         "titulo": "Transcriptor Audio y Video",
-        "descripcion": "Transcribe audio/video automáticamente",
+        "descripcion": "Transcribe automáticamente",
         "imagen": "OIG3.jpg",
         "enlace": "https://transcript-whisper.streamlit.app/"
     },
     {
         "titulo": "Entrenando Modelos",
-        "descripcion": "Entrena tus propios modelos de IA",
+        "descripcion": "Entrena modelos de IA",
         "imagen": "OIG5.jpg",
         "enlace": "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/"
     },
     {
         "titulo": "Sistema Ciberfísico",
-        "descripcion": "Interacción con el mundo físico",
+        "descripcion": "Interacción física con IA",
         "imagen": "OIG6.jpg",
         "enlace": "https://vision2-gpt4o.streamlit.app/"
     },
     {
         "titulo": "Aplicación 10",
-        "descripcion": "Descripción de la aplicación 10",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 11",
-        "descripcion": "Descripción de la aplicación 11",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 12",
-        "descripcion": "Descripción de la aplicación 12",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 13",
-        "descripcion": "Descripción de la aplicación 13",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 14",
-        "descripcion": "Descripción de la aplicación 14",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 15",
-        "descripcion": "Descripción de la aplicación 15",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 16",
-        "descripcion": "Descripción de la aplicación 16",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 17",
-        "descripcion": "Descripción de la aplicación 17",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 18",
-        "descripcion": "Descripción de la aplicación 18",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 19",
-        "descripcion": "Descripción de la aplicación 19",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     },
     {
         "titulo": "Aplicación 20",
-        "descripcion": "Descripción de la aplicación 20",
+        "descripcion": "Descripción aquí",
         "imagen": "txt_to_audio2.png",
         "enlace": "#"
     }
 ]
 
-# Grid de 4 columnas
-cols = st.columns(4)
+# Contenedor principal centrado
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
-for idx, app in enumerate(aplicaciones):
-    with cols[idx % 4]:
-        st.markdown(f"""
-        <div class="card">
-            <div class="card-title">{app['titulo']}</div>
-            <div class="card-description">{app['descripcion']}</div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Imagen
-        try:
-            image = Image.open(app['imagen'])
-            st.image(image, use_column_width=True)
-        except:
-            st.info("📷 Imagen no disponible")
-        
-        # Botón
-        st.markdown(f"""
-        <a href="{app['enlace']}" target="_blank">
-            <button class="btn btn-primary" style="width: 100%; cursor: pointer;">
-                🔗 Acceder a la App
-            </button>
-        </a>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("")  # Espaciador
+# Grid de cards
+st.markdown('<div class="cards-grid">', unsafe_allow_html=True)
+
+for app in aplicaciones:
+    st.markdown(f"""
+    <div class="card">
+        <div class="card-title">{app['titulo']}</div>
+        <div class="card-description">{app['descripcion']}</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Imagen
+    try:
+        image = Image.open(app['imagen'])
+        st.image(image, use_column_width=True)
+    except:
+        st.image("https://via.placeholder.com/200x140?text=No+image", use_column_width=True)
+    
+    # Botón
+    st.markdown(f"""
+    <a href="{app['enlace']}" target="_blank" style="text-decoration: none;">
+        <button class="card-button">🔗 Acceder</button>
+    </a>
+    """, unsafe_allow_html=True)
+
+st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.markdown("""
-<div style="text-align: center; padding: 20px; color: #999;">
+<div style="text-align: center; padding: 20px; color: #999; font-size: 0.9em;">
     <p>© 2024 Portfolio de Inteligencia Artificial</p>
 </div>
 """, unsafe_allow_html=True)
