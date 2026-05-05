@@ -14,8 +14,8 @@ st.markdown("""
 <style>
     .card {
         background: white;
-        border-radius: 12px;
-        padding: 20px;
+        border-radius: 16px;
+        padding: 16px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         text-align: center;
         height: 100%;
@@ -24,6 +24,7 @@ st.markdown("""
         justify-content: space-between;
         border-top: 4px solid #667eea;
         transition: box-shadow 0.3s ease, transform 0.2s ease;
+        aspect-ratio: 1;
     }
     
     .card:hover {
@@ -32,42 +33,41 @@ st.markdown("""
     }
     
     .card-title {
-        font-size: 1.2em;
+        font-size: 0.95em;
         font-weight: bold;
-        margin: 15px 0;
+        margin: 8px 0;
         color: #333;
+        line-height: 1.3;
     }
     
     .card-description {
-        font-size: 0.9em;
+        font-size: 0.8em;
         color: #666;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         flex-grow: 1;
+        line-height: 1.3;
     }
     
     .card-image {
         width: 100%;
-        height: 180px;
+        height: 120px;
         object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 15px;
-    }
-    
-    .btn-container {
-        display: flex;
-        gap: 8px;
+        border-radius: 12px;
+        margin-bottom: 10px;
     }
     
     .btn {
-        flex: 1;
-        padding: 10px;
+        padding: 8px;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         cursor: pointer;
         font-weight: bold;
         text-decoration: none;
         display: inline-block;
         transition: all 0.2s;
+        width: 100%;
+        box-sizing: border-box;
+        font-size: 0.85em;
     }
     
     .btn-primary {
@@ -266,7 +266,7 @@ for idx, app in enumerate(aplicaciones):
         # Botón
         st.markdown(f"""
         <a href="{app['enlace']}" target="_blank">
-            <button class="btn btn-primary" style="width: 100%; cursor: pointer;">
+            <button class="btn btn-primary">
                 🔗 Acceder a la App
             </button>
         </a>
