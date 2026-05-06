@@ -1,174 +1,74 @@
 import streamlit as st
-import streamlit.components.v1 as components
-import urllib.parse
+from PIL import Image
+st.title("Aplicaciones de Inteligencia Artificial.")
+with st.sidebar:
+  st.subheader("Aplicaciones con Inteligencia Artificial.")
+  parrafo = (
+    "La inteligencia artificial permite mejorar la toma de decisiones con el uso de datos, "
+    "automatizar tareas rutinarias y proporcionar análisis avanzados en tiempo real, lo que "
+    "resulta en una mayor eficiencia y precisión en diversos campos."
+  )
+  st.write(parrafo)
+url_ia="https://sites.google.com/view/aplicacionesdeia/inicio"
+st.subheader("En el siguiente enlace puedes encontrar páginas y ejercicios prácticos")
+st.write(f"Enlace para páginas y ejercicios: [Enlace]({url_ia})")
+col1, col2, col3 = st.columns(3)
+with col1:
 
-# =====================================================
-# CONFIG
-# =====================================================
-st.set_page_config(layout="wide")
+ st.subheader("Conversión de texto a voz")
+ image = Image.open('txt_to_audio2.png')
+ st.image(image, width=190)
+ st.write("En la siguiente enlace usaremos una de las aplicaciones de Inteligencia Artificial") 
+ url = "https://imultimod.streamlit.app/"
+ st.write(f"Texto a voz: [Enlace]({url})")
+ st.subheader("Reconocimiento de Objetos")
+ image = Image.open('txt_to_audio.png')
+ st.image(image, width=200)
+ st.write("En la siguiente enlace veremos como se detectan objetos en Imágenes.") 
+ url = "https://yolov5cmc.streamlit.app/"
+ st.write(f"YOLO: [Enlace]({url})")
+ st.subheader("Entrenando Modelos")
+ image = Image.open('OIG5.jpg')
+ st.image(image, width=200)
+ st.write("En la siguiente enlace veremos como puedes usar tu modelo entrenado.") 
+ url = "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/"
+ st.write(f"YOLO: [Enlace]({url})")
+with col2: 
+ st.subheader("Conversión de voz a texto")
+ image = Image.open('OIG8.jpg')
+ st.image(image, width=200)
+ st.write("En la siguiente veremos una aplicación que usa la conversión de voz a texto.") 
+ url = "https://traductorw.streamlit.app/"
+ st.write(f"Voz a texto: [Enlace]({url})")
+ st.subheader("Análisis de Datos")
+ image = Image.open('data_analisis.png')
+ st.image(image, width=190)
+ st.write("En la siguiente enlace veremos como se pueden analizar datos usando agentes.") 
+ url = "https://dataagente.streamlit.app/"
+ st.write(f"Datos: [Enlace]({url})")
+ st.subheader("Trasnscriptor Audio y Video")
+ image = Image.open('OIG3.jpg')
+ st.image(image, width=200)
+ st.write("En la siguiente enlace veremos como realizamos transcripciones de audio/video.") 
+ url = "https://transcript-whisper.streamlit.app/"
+ st.write(f"Transcriptor: [Enlace]({url})")
+with col3: 
+ st.subheader("Generación en Contexto")
+ image = Image.open('Chat_pdf.png')
+ st.image(image, width=190)
+ st.write("En la siguiente veremos una aplicación que usa RAG a partir de un documento (PDF).") 
+ url = "https://chatpdf-cc.streamlit.app/"
+ st.write(f"RAG: [Enlace]({url})")
+ st.subheader("Análisis de Imagen")
+ image = Image.open('OIG4.jpg')
+ st.image(image, width=200)
+ st.write("En la siguiente enlace veremos la capacidad de análisis en Imágenes.") 
+ url = "https://vision2-gpt4o.streamlit.app/"
+ st.write(f"Vision: [Enlace]({url})")
 
-# =====================================================
-# DATA
-# =====================================================
-aplicaciones = [
-    {"titulo": "Texto a Voz", "descripcion": "Convierte texto en audio", "categoria": "Audio", "nuevo": True, "color": "lime"},
-    {"titulo": "Voz a Texto", "descripcion": "Transcribe audio", "categoria": "Audio", "nuevo": False, "color": "butter"},
-    {"titulo": "YOLO Objetos", "descripcion": "Detecta objetos", "categoria": "Visión", "nuevo": False, "color": "magenta"},
-    {"titulo": "Análisis Imagen", "descripcion": "IA visual avanzada", "categoria": "Visión", "nuevo": True, "color": "violet"},
-    {"titulo": "RAG PDF", "descripcion": "Pregunta sobre PDFs", "categoria": "NLP", "nuevo": False, "color": "lime"},
-]
-
-# =====================================================
-# HTML + CSS PRO
-# =====================================================
-html = """
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* BODY */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0f172a;
-    color: white;
-}
-
-/* GRID RESPONSIVE REAL */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 24px;
-    padding: 20px;
-}
-
-/* CARD */
-.card {
-    background: #1e293b;
-    border-radius: 18px;
-    overflow: hidden;
-    transition: 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-/* BORDE COLOR */
-.card.lime { border-left: 5px solid #84cc16; }
-.card.butter { border-left: 5px solid #facc15; }
-.card.magenta { border-left: 5px solid #ec4899; }
-.card.violet { border-left: 5px solid #8b5cf6; }
-
-/* IMAGE */
-.card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-}
-
-/* CONTENT */
-.content {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-/* BADGES */
-.badge {
-    background: #ec4899;
-    font-size: 11px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    margin-bottom: 6px;
-    width: fit-content;
-}
-
-.category {
-    background: #334155;
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    margin-bottom: 8px;
-    width: fit-content;
-}
-
-/* TEXT */
-.title {
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.desc {
-    font-size: 13px;
-    color: #cbd5f5;
-    margin: 10px 0;
-    flex-grow: 1;
-}
-
-/* BUTTON */
-.btn {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6);
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    font-size: 13px;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="grid">
-"""
-
-# =====================================================
-# GENERAR CARDS
-# =====================================================
-for app in aplicaciones:
-    titulo_safe = urllib.parse.quote(app["titulo"])
-
-    html += f"""
-    <div class="card {app['color']}">
-        <img src="https://via.placeholder.com/400x150?text={titulo_safe}">
-        <div class="content">
-            {"<div class='badge'>🆕 NUEVO</div>" if app["nuevo"] else ""}
-            <div class="category">{app["categoria"]}</div>
-            <div class="title">{app["titulo"]}</div>
-            <div class="desc">{app["descripcion"]}</div>
-            <a href="#" class="btn">Ver app</a>
-        </div>
-    </div>
-    """
-
-html += """
-</div>
-</body>
-</html>
-"""
-
-# =====================================================
-# RENDER PERFECTO
-# =====================================================
-components.html(html, height=800, scrolling=True)
+ st.subheader("Sistema Ciberfísico")
+ image = Image.open('OIG6.jpg')
+ st.image(image, width=200)
+ st.write("En la siguiente enlace veremos la capacidad de interacción con el mundo físico.") 
+ url = "https://vision2-gpt4o.streamlit.app/"
+ st.write(f"Vision: [Enlace]({url})")
