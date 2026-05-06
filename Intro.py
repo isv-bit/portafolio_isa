@@ -103,8 +103,8 @@ apps = [
     {"titulo":"TRADUCTOR","desc":"Aplicación que convierte voz o texto de un idioma a otro de forma rápida y automática.","img":get_base64("traductor.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
     {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
     {"titulo":"ANÁLISIS DE IMAGEN","desc":"La IA describe de forma inteligente la imagen que subes","img":get_base64("analisisimagen.jpg"),"url":"https://visionapp-isa.streamlit.app/","color":"lime"},
-    {"titulo":"DEMO PREGUNTAS Y RESPUESTAS","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-idf-isabel.streamlit.app/","color":"butter"},
-    {"titulo":"ANÁLISIS PDF","desc":"Analiza datos con IA de un archivo PDF","img":get_base64("pdf.jpg"),"url":"https://chatpdf-isa.streamlit.app/","color":"blue"},
+    {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN INGLÉS","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-idf-isabel.streamlit.app/","color":"butter"},
+    {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN ESPAÑOL","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-espanol.streamlit.app/","color":"blue"},
     {"titulo":"TRADUCTOR","desc":"Aplicación que convierte voz o texto de un idioma a otro de forma rápida y automática.","img":get_base64("traductor.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
     {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
 ]
