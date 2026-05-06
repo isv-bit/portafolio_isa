@@ -6,17 +6,17 @@ import streamlit as st
 st.set_page_config(page_title="Portafolio IA", layout="wide")
 
 # =====================================================
-# ESTILOS MEJORADOS (ESPACIADO + DISEÑO)
+# ESTILOS
 # =====================================================
 st.markdown("""
 <style>
 
-/* CONTENEDOR GENERAL */
+/* CONTENEDOR */
 .block-container {
     padding-top: 2rem;
 }
 
-/* GRID MÁS LIMPIO */
+/* GRID */
 .row-widget.stHorizontal {
     gap: 30px;
 }
@@ -64,6 +64,7 @@ st.markdown("""
     color: white;
     font-size: 13px;
     transition: 0.3s;
+    display: inline-block;
 }
 
 .btn:hover {
@@ -95,11 +96,10 @@ st.write("Explora aplicaciones de IA con diseño moderno y organizado.")
 search = st.text_input("🔍 Buscar aplicación...")
 
 # =====================================================
-# DATA (19 APPS)
+# DATA
 # =====================================================
 apps = [
-    # ORIGINALES
-    {"titulo":"CONTROL POR VOZ","desc":"A la hora de habalr la ia lo transcribe","img":"controlvoz.jpg","url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
+    {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":"controlvoz.jpg","url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
     {"titulo":"Voz a Texto","desc":"Transcribe audio","img":"OIG8.jpg","url":"https://traductorw.streamlit.app/","color":"lime"},
     {"titulo":"YOLO Objetos","desc":"Detecta objetos","img":"txt_to_audio.png","url":"https://yolov5cmc.streamlit.app/","color":"butter"},
     {"titulo":"Análisis de Datos","desc":"Analiza datos con IA","img":"data_analisis.png","url":"https://dataagente.streamlit.app/","color":"blue"},
@@ -109,7 +109,7 @@ apps = [
     {"titulo":"Sistema Ciberfísico","desc":"IA + mundo físico","img":"OIG6.jpg","url":"https://vision2-gpt4o.streamlit.app/","color":"lime"},
     {"titulo":"Entrenamiento","desc":"Modelos IA","img":"OIG5.jpg","url":"https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/","color":"violet"},
 
-    # NUEVAS 10
+    # NUEVAS
     {"titulo":"Chat IA","desc":"Asistente inteligente","img":"txt_to_audio2.png","url":"#","color":"magenta"},
     {"titulo":"Resumen IA","desc":"Resume textos","img":"txt_to_audio2.png","url":"#","color":"butter"},
     {"titulo":"Traducción IA","desc":"Traduce idiomas","img":"txt_to_audio2.png","url":"#","color":"blue"},
@@ -131,20 +131,25 @@ apps_filtradas = [
 ]
 
 # =====================================================
-# GRID (MEJOR DISTRIBUCIÓN)
+# GRID
 # =====================================================
 cols = st.columns(3, gap="large")
 
 for i, app in enumerate(apps_filtradas):
     with cols[i % 3]:
+
+        st.markdown(f'<div class="card {app["color"]}">', unsafe_allow_html=True)
+
+        # ✅ IMAGEN CORREGIDA
+        st.image(app["img"], use_container_width=True)
+
         st.markdown(f"""
-        <div class="card {app['color']}">
-            <img src="{app['img']}" width="100%">
             <div class="card-title">{app['titulo']}</div>
             <div class="card-desc">{app['desc']}</div>
             <a href="{app['url']}" target="_blank" class="btn">Ir a la app</a>
-        </div>
         """, unsafe_allow_html=True)
+
+        st.markdown("</div>", unsafe_allow_html=True)
 
 # =====================================================
 # SIDEBAR
