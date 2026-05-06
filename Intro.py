@@ -102,7 +102,7 @@ apps = [
     {"titulo":"ANÁLISIS PDF","desc":"Analiza datos con IA de un archivo PDF","img":get_base64("pdf.jpg"),"url":"https://chatpdf-isa.streamlit.app/","color":"blue"},
     {"titulo":"TRADUCTOR","desc":"Aplicación que convierte voz o texto de un idioma a otro de forma rápida y automática.","img":get_base64("traductor.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
     {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
-    {"titulo":"ANÁLISIS DE IMAGEN","desc":"La IA describe de forma inteligente la imagen que subes","img":get_base64("gato.png"),"url":"https://visionapp-isa.streamlit.app/","color":"lime"},
+    {"titulo":"ANÁLISIS DE IMAGEN","desc":"La IA describe de forma inteligente la imagen que subes","img":get_base64("analisisimagen.jpg"),"url":"https://visionapp-isa.streamlit.app/","color":"lime"},
     {"titulo":"ANÁLISIS DE TEXTO","desc":"La IA analiza el texto que cargues o escribas y te filtra algunos datos","img":get_base64("analisistexto.jpg"),"url":"https://isv-bit-analisis-de-texto-app-pxurpk.streamlit.app/","color":"butter"},
     {"titulo":"ANÁLISIS PDF","desc":"Analiza datos con IA de un archivo PDF","img":get_base64("pdf.jpg"),"url":"https://chatpdf-isa.streamlit.app/","color":"blue"},
     {"titulo":"TRADUCTOR","desc":"Aplicación que convierte voz o texto de un idioma a otro de forma rápida y automática.","img":get_base64("traductor.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
