@@ -105,7 +105,7 @@ apps = [
     {"titulo":"ANÁLISIS DE IMAGEN","desc":"La IA describe de forma inteligente la imagen que subes","img":get_base64("analisisimagen.jpg"),"url":"https://visionapp-isa.streamlit.app/","color":"lime"},
     {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN INGLÉS","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-idf-isabel.streamlit.app/","color":"butter"},
     {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN ESPAÑOL","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-espanol.streamlit.app/","color":"blue"},
-    {"titulo":"ANÁLISIS DE SENTIMIENTOS","desc":"Aplicación que analiza el sentimiento de un texto y determina si es positivo, negativo o neutral.","img":get_base64("sentimental.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
+    {"titulo":"ANÁLISIS DE SENTIMIENTOS","desc":"Aplicación que analiza el sentimiento de un texto y determina si es positivo, negativo o neutral.","img":get_base64("sentimental.jpg"),"url":"https://sentimenta-isa.streamlit.app/","color":"violet"},
     {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
 ]
 
