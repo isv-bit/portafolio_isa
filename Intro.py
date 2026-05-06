@@ -1,4 +1,12 @@
 import streamlit as st
+import base64
+
+# =====================================================
+# FUNCION PARA IMAGEN LOCAL
+# =====================================================
+def get_base64(img_path):
+    with open(img_path, "rb") as f:
+        return base64.b64encode(f.read()).decode()
 
 # =====================================================
 # CONFIG
@@ -11,35 +19,32 @@ st.set_page_config(page_title="Portafolio IA", layout="wide")
 st.markdown("""
 <style>
 
-/* CONTENEDOR */
-.block-container {
-    padding-top: 2rem;
-}
-
-/* GRID */
-.row-widget.stHorizontal {
-    gap: 30px;
-}
-
-/* CARD */
 .card {
     border-radius: 18px;
-    padding: 18px;
-    text-align: center;
-    transition: all 0.35s ease;
+    overflow: hidden;
+    transition: 0.35s;
+    margin-bottom: 30px;
     color: white;
-    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-8px) scale(1.03);
+    transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 /* IMAGEN */
 .card img {
-    border-radius: 12px;
-    margin-bottom: 12px;
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+/* CONTENIDO */
+.card-content {
+    padding: 16px;
+    text-align: center;
 }
 
 /* TEXTO */
@@ -63,8 +68,8 @@ st.markdown("""
     text-decoration: none;
     color: white;
     font-size: 13px;
-    transition: 0.3s;
     display: inline-block;
+    transition: 0.3s;
 }
 
 .btn:hover {
@@ -78,8 +83,6 @@ st.markdown("""
 .butter { background: linear-gradient(135deg, #fff200, #ffd000); color:black;}
 .blue { background: linear-gradient(135deg, #00c6ff, #0072ff); }
 .violet { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
-
-h1 { color: white !important; }
 
 </style>
 """, unsafe_allow_html=True)
@@ -96,30 +99,12 @@ st.write("Explora aplicaciones de IA con diseño moderno y organizado.")
 search = st.text_input("🔍 Buscar aplicación...")
 
 # =====================================================
-# DATA
+# DATA (con base64)
 # =====================================================
 apps = [
-    {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":"controlvoz.jpg","url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
-    {"titulo":"Voz a Texto","desc":"Transcribe audio","img":"OIG8.jpg","url":"https://traductorw.streamlit.app/","color":"lime"},
-    {"titulo":"YOLO Objetos","desc":"Detecta objetos","img":"txt_to_audio.png","url":"https://yolov5cmc.streamlit.app/","color":"butter"},
-    {"titulo":"Análisis de Datos","desc":"Analiza datos con IA","img":"data_analisis.png","url":"https://dataagente.streamlit.app/","color":"blue"},
-    {"titulo":"Transcriptor","desc":"Audio/video a texto","img":"OIG3.jpg","url":"https://transcript-whisper.streamlit.app/","color":"violet"},
-    {"titulo":"RAG PDF","desc":"Consulta documentos","img":"Chat_pdf.png","url":"https://chatpdf-cc.streamlit.app/","color":"magenta"},
-    {"titulo":"Visión IA","desc":"Análisis de imágenes","img":"OIG4.jpg","url":"https://vision2-gpt4o.streamlit.app/","color":"blue"},
-    {"titulo":"Sistema Ciberfísico","desc":"IA + mundo físico","img":"OIG6.jpg","url":"https://vision2-gpt4o.streamlit.app/","color":"lime"},
-    {"titulo":"Entrenamiento","desc":"Modelos IA","img":"OIG5.jpg","url":"https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/","color":"violet"},
-
-    # NUEVAS
-    {"titulo":"Chat IA","desc":"Asistente inteligente","img":"txt_to_audio2.png","url":"#","color":"magenta"},
-    {"titulo":"Resumen IA","desc":"Resume textos","img":"txt_to_audio2.png","url":"#","color":"butter"},
-    {"titulo":"Traducción IA","desc":"Traduce idiomas","img":"txt_to_audio2.png","url":"#","color":"blue"},
-    {"titulo":"Clasificación","desc":"Clasifica datos","img":"txt_to_audio2.png","url":"#","color":"lime"},
-    {"titulo":"Generador Imagen","desc":"Crea imágenes","img":"txt_to_audio2.png","url":"#","color":"violet"},
-    {"titulo":"Detector Spam","desc":"Filtra mensajes","img":"txt_to_audio2.png","url":"#","color":"magenta"},
-    {"titulo":"Predicción","desc":"Predice valores","img":"txt_to_audio2.png","url":"#","color":"blue"},
-    {"titulo":"OCR IA","desc":"Lee imágenes","img":"txt_to_audio2.png","url":"#","color":"butter"},
-    {"titulo":"Recomendador","desc":"Sugiere contenido","img":"txt_to_audio2.png","url":"#","color":"lime"},
-    {"titulo":"Audio IA","desc":"Procesa sonido","img":"txt_to_audio2.png","url":"#","color":"violet"},
+    {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
+    {"titulo":"Voz a Texto","desc":"Transcribe audio","img":get_base64("OIG8.jpg"),"url":"https://traductorw.streamlit.app/","color":"lime"},
+    {"titulo":"YOLO Objetos","desc":"Detecta objetos","img":get_base64("txt_to_audio.png"),"url":"https://yolov5cmc.streamlit.app/","color":"butter"},
 ]
 
 # =====================================================
@@ -137,19 +122,21 @@ cols = st.columns(3, gap="large")
 
 for i, app in enumerate(apps_filtradas):
     with cols[i % 3]:
-
-        st.markdown(f'<div class="card {app["color"]}">', unsafe_allow_html=True)
-
-        # ✅ IMAGEN CORREGIDA
-        st.image(app["img"], use_container_width=True)
-
         st.markdown(f"""
-            <div class="card-title">{app['titulo']}</div>
-            <div class="card-desc">{app['desc']}</div>
-            <a href="{app['url']}" target="_blank" class="btn">Ir a la app</a>
-        """, unsafe_allow_html=True)
+        <div class="card {app['color']}">
 
-        st.markdown("</div>", unsafe_allow_html=True)
+            <!-- IMAGEN -->
+            <img src="data:image/jpg;base64,{app['img']}">
+
+            <!-- CONTENIDO -->
+            <div class="card-content">
+                <div class="card-title">{app['titulo']}</div>
+                <div class="card-desc">{app['desc']}</div>
+                <a href="{app['url']}" target="_blank" class="btn">Ir a la app</a>
+            </div>
+
+        </div>
+        """, unsafe_allow_html=True)
 
 # =====================================================
 # SIDEBAR
