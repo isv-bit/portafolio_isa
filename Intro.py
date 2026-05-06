@@ -1,262 +1,174 @@
 import streamlit as st
+import streamlit.components.v1 as components
+import urllib.parse
 
 # =====================================================
-# CONFIGURACIÓN DE PÁGINA
+# CONFIG
 # =====================================================
-st.set_page_config(
-    page_title="Portfolio IA",
-    page_icon="🚀",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
-
-# =====================================================
-# ESTILOS (CSS)
-# =====================================================
-def load_css():
-    st.markdown("""
-    <style>
-    /* RESET */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background: #f8f9fa;
-    }
-
-    /* HEADER */
-    .header-custom {
-        text-align: center;
-        padding: 40px 0 30px;
-    }
-
-    .header-custom h1 {
-        font-size: 2.8em;
-        font-weight: 700;
-        color: #1a1a1a;
-    }
-
-    .header-custom p {
-        font-size: 1.1em;
-        color: #666;
-    }
-
-    /* GRID */
-    .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 24px;
-        margin: 40px 0;
-    }
-
-    /* CARD */
-    .card {
-        background: white;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transition: 0.3s;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-    }
-
-    .card-image {
-        width: 100%;
-        height: 140px;
-        object-fit: cover;
-    }
-
-    .card-content {
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-    }
-
-    /* BADGES */
-    .badge-nuevo {
-        background: #FF1493;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 0.7em;
-        font-weight: 700;
-        margin-bottom: 8px;
-        width: fit-content;
-    }
-
-    .category-badge {
-        background: #667eea;
-        color: white;
-        padding: 4px 10px;
-        border-radius: 16px;
-        font-size: 0.7em;
-        margin-bottom: 8px;
-        width: fit-content;
-    }
-
-    /* TEXTO */
-    .card-title {
-        font-size: 1em;
-        font-weight: 700;
-        margin-bottom: 6px;
-    }
-
-    .card-description {
-        font-size: 0.85em;
-        color: #666;
-        margin-bottom: 12px;
-        flex-grow: 1;
-    }
-
-    /* BOTÓN */
-    .card-button {
-        background: linear-gradient(135deg, #667eea, #764ba2);
-        color: white;
-        padding: 10px;
-        border-radius: 8px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 0.85em;
-        font-weight: 600;
-    }
-
-    /* COLORES */
-    .card-lime { border-left: 5px solid #ADFF2F; }
-    .card-butter { border-left: 5px solid #FFD700; }
-    .card-magenta { border-left: 5px solid #FF1493; }
-    .card-violet { border-left: 5px solid #9D4EDD; }
-
-    /* INFO BOX */
-    .info-box {
-        background: white;
-        padding: 24px;
-        border-radius: 16px;
-        border-left: 5px solid #ADFF2F;
-        margin: 30px 0;
-    }
-
-    /* FOOTER */
-    .footer-custom {
-        text-align: center;
-        margin-top: 40px;
-        padding: 30px 0;
-        color: #999;
-        border-top: 1px solid #e0e0e0;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-        .cards-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    @media (max-width: 768px) {
-        .cards-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 480px) {
-        .cards-grid { grid-template-columns: 1fr; }
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-load_css()
-
-# =====================================================
-# SIDEBAR
-# =====================================================
-with st.sidebar:
-    st.title("🚀 Portafolio IA")
-
-    st.subheader("📊 Estadísticas")
-    col1, col2 = st.columns(2)
-    col1.metric("Apps", "15")
-    col2.metric("Categorías", "5")
-
-    col3, col4 = st.columns(2)
-    col3.metric("Disponibilidad", "24/7")
-    col4.metric("Estado", "100%")
-
-# =====================================================
-# HEADER
-# =====================================================
-st.markdown("""
-<div class="header-custom">
-    <h1>🚀 Portafolio de IA</h1>
-    <p>Explora aplicaciones de Inteligencia Artificial</p>
-</div>
-""", unsafe_allow_html=True)
-
-# =====================================================
-# FILTROS
-# =====================================================
-col1, col2 = st.columns([3, 1])
-
-search_term = col1.text_input("🔍 Buscar...")
-categoria_filter = col2.selectbox("Categoría", ["Todos", "Audio", "Visión", "Datos", "NLP"])
+st.set_page_config(layout="wide")
 
 # =====================================================
 # DATA
 # =====================================================
 aplicaciones = [
-    {"titulo": "Texto a Voz", "descripcion": "Convierte texto en audio", "categoria": "Audio", "enlace": "#", "nuevo": True, "color": "lime"},
-    {"titulo": "Voz a Texto", "descripcion": "Transcribe audio", "categoria": "Audio", "enlace": "#", "nuevo": False, "color": "butter"},
-    {"titulo": "YOLO Objetos", "descripcion": "Detecta objetos", "categoria": "Visión", "enlace": "#", "nuevo": False, "color": "magenta"},
+    {"titulo": "Texto a Voz", "descripcion": "Convierte texto en audio", "categoria": "Audio", "nuevo": True, "color": "lime"},
+    {"titulo": "Voz a Texto", "descripcion": "Transcribe audio", "categoria": "Audio", "nuevo": False, "color": "butter"},
+    {"titulo": "YOLO Objetos", "descripcion": "Detecta objetos", "categoria": "Visión", "nuevo": False, "color": "magenta"},
+    {"titulo": "Análisis Imagen", "descripcion": "IA visual avanzada", "categoria": "Visión", "nuevo": True, "color": "violet"},
+    {"titulo": "RAG PDF", "descripcion": "Pregunta sobre PDFs", "categoria": "NLP", "nuevo": False, "color": "lime"},
 ]
 
 # =====================================================
-# FILTRADO
+# HTML + CSS PRO
 # =====================================================
-apps_filtradas = [
-    app for app in aplicaciones
-    if (search_term.lower() in app["titulo"].lower() or search_term.lower() in app["descripcion"].lower())
-]
+html = """
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-if categoria_filter != "Todos":
-    apps_filtradas = [app for app in apps_filtradas if app["categoria"] == categoria_filter]
+<style>
 
-# =====================================================
-# RENDER CARDS
-# =====================================================
-color_classes = {
-    "lime": "card-lime",
-    "butter": "card-butter",
-    "magenta": "card-magenta",
-    "violet": "card-violet"
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html = '<div class="cards-grid">'
+/* BODY */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0f172a;
+    color: white;
+}
 
-for app in apps_filtradas:
+/* GRID RESPONSIVE REAL */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    padding: 20px;
+}
+
+/* CARD */
+.card {
+    background: #1e293b;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* BORDE COLOR */
+.card.lime { border-left: 5px solid #84cc16; }
+.card.butter { border-left: 5px solid #facc15; }
+.card.magenta { border-left: 5px solid #ec4899; }
+.card.violet { border-left: 5px solid #8b5cf6; }
+
+/* IMAGE */
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* CONTENT */
+.content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* BADGES */
+.badge {
+    background: #ec4899;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    width: fit-content;
+}
+
+.category {
+    background: #334155;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 8px;
+    width: fit-content;
+}
+
+/* TEXT */
+.title {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.desc {
+    font-size: 13px;
+    color: #cbd5f5;
+    margin: 10px 0;
+    flex-grow: 1;
+}
+
+/* BUTTON */
+.btn {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+"""
+
+# =====================================================
+# GENERAR CARDS
+# =====================================================
+for app in aplicaciones:
+    titulo_safe = urllib.parse.quote(app["titulo"])
+
     html += f"""
-    <div class="card {color_classes.get(app['color'], 'card-lime')}">
-        <img src="https://via.placeholder.com/400x140" class="card-image">
-        <div class="card-content">
-            {"<div class='badge-nuevo'>🆕 NUEVO</div>" if app["nuevo"] else ""}
-            <div class="category-badge">{app["categoria"]}</div>
-            <h3 class="card-title">{app["titulo"]}</h3>
-            <p class="card-description">{app["descripcion"]}</p>
-            <a href="{app["enlace"]}" class="card-button">Ver</a>
+    <div class="card {app['color']}">
+        <img src="https://via.placeholder.com/400x150?text={titulo_safe}">
+        <div class="content">
+            {"<div class='badge'>🆕 NUEVO</div>" if app["nuevo"] else ""}
+            <div class="category">{app["categoria"]}</div>
+            <div class="title">{app["titulo"]}</div>
+            <div class="desc">{app["descripcion"]}</div>
+            <a href="#" class="btn">Ver app</a>
         </div>
     </div>
     """
 
-html += "</div>"
-st.markdown(html, unsafe_allow_html=True)
+html += """
+</div>
+</body>
+</html>
+"""
 
 # =====================================================
-# FOOTER
+# RENDER PERFECTO
 # =====================================================
-st.markdown("""
-<div class="footer-custom">
-    <p>© 2024 Portafolio IA</p>
-</div>
-""", unsafe_allow_html=True)
+components.html(html, height=800, scrolling=True)
