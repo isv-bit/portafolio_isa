@@ -99,7 +99,7 @@ search = st.text_input("🔍 Buscar aplicación...")
 # =====================================================
 apps = [
     # ORIGINALES
-    {"titulo":"Texto a Voz","desc":"Control de voz","img":"controlvoz.jpg","url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
+    {"titulo":"CONTROL POR VOZ","desc":"A la hora de habalr la ia lo transcribe","img":"controlvoz.jpg","url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
     {"titulo":"Voz a Texto","desc":"Transcribe audio","img":"OIG8.jpg","url":"https://traductorw.streamlit.app/","color":"lime"},
     {"titulo":"YOLO Objetos","desc":"Detecta objetos","img":"txt_to_audio.png","url":"https://yolov5cmc.streamlit.app/","color":"butter"},
     {"titulo":"Análisis de Datos","desc":"Analiza datos con IA","img":"data_analisis.png","url":"https://dataagente.streamlit.app/","color":"blue"},
