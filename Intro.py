@@ -106,7 +106,7 @@ apps = [
     {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN INGLÉS","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-idf-isabel.streamlit.app/","color":"butter"},
     {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN ESPAÑOL","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-espanol.streamlit.app/","color":"blue"},
     {"titulo":"ANÁLISIS DE SENTIMIENTOS","desc":"Aplicación que analiza el sentimiento de un texto y determina si es positivo, negativo o neutral.","img":get_base64("sentimental.jpg"),"url":"https://sentimenta-isa.streamlit.app/","color":"violet"},
-    {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
+    {"titulo":"WORD CLOUD","desc":"Esta aplicación genera una nube de palabras a partir de cualquier texto,resaltando visualmente las palabras más frecuentes.","img":get_base64("cloud.jpg"),"url":"https://wordcloudisa.streamlit.app/","color":"magenta"},
 ]
 
 # =====================================================
