@@ -9,135 +9,225 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS personalizado con colores vibrantes
+# CSS personalizado LIMPIO Y ORDENADO
 st.markdown("""
 <style>
-    /* Variables de color */
-    :root {
-        --lime: #ADFF2F;
-        --butter: #FFD700;
-        --magenta: #FF1493;
-        --violet: #9D4EDD;
-        --primary: #667eea;
-        --secondary: #764ba2;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    /* Estilos generales */
     body {
-        background: #f5f5f5;
+        background: #f8f9fa;
     }
 
-    /* Card base */
-    .card {
-        background: white;
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        border-top: 6px solid #667eea;
-        transition: all 0.3s ease;
-        margin-bottom: 20px;
+    /* Container principal */
+    .main-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
     }
-
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Colores de bordes alternados */
-    .card-lime { border-left: 6px solid #ADFF2F; border-top: none; }
-    .card-butter { border-left: 6px solid #FFD700; border-top: none; }
-    .card-magenta { border-left: 6px solid #FF1493; border-top: none; }
-    .card-violet { border-left: 6px solid #9D4EDD; border-top: none; }
 
     /* Header */
     .header-custom {
         text-align: center;
-        padding: 20px 0;
-        margin-bottom: 30px;
+        padding: 40px 0 30px 0;
     }
 
     .header-custom h1 {
-        color: #333;
-        font-size: 2.5em;
+        color: #1a1a1a;
+        font-size: 2.8em;
         margin-bottom: 10px;
+        font-weight: 700;
     }
 
     .header-custom p {
         color: #666;
         font-size: 1.1em;
+        font-weight: 300;
+    }
+
+    /* Grid de cards */
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 24px;
+        margin: 40px 0;
+    }
+
+    /* Card */
+    .card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Borde izquierdo coloreado */
+    .card-lime { border-left: 5px solid #ADFF2F; }
+    .card-butter { border-left: 5px solid #FFD700; }
+    .card-magenta { border-left: 5px solid #FF1493; }
+    .card-violet { border-left: 5px solid #9D4EDD; }
+
+    /* Imagen */
+    .card-image {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    /* Contenido */
+    .card-content {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    /* Badge */
+    .badge-nuevo {
+        background: #FF1493;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.7em;
+        font-weight: 700;
+        display: inline-block;
+        margin-bottom: 8px;
+        width: fit-content;
+    }
+
+    /* Categoría */
+    .category-badge {
+        background: #667eea;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 16px;
+        font-size: 0.7em;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 8px;
+        width: fit-content;
+    }
+
+    /* Título */
+    .card-title {
+        color: #1a1a1a;
+        font-size: 1em;
+        font-weight: 700;
+        margin-bottom: 6px;
+        line-height: 1.3;
+    }
+
+    /* Descripción */
+    .card-description {
+        color: #666;
+        font-size: 0.85em;
+        margin-bottom: 12px;
+        flex-grow: 1;
+        line-height: 1.4;
+    }
+
+    /* Botón */
+    .card-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 0.85em;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        margin-top: auto;
+    }
+
+    .card-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
     }
 
     /* Info box */
     .info-box {
         background: white;
-        padding: 20px;
-        border-radius: 15px;
-        border-left: 6px solid #ADFF2F;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        margin-bottom: 30px;
+        padding: 24px;
+        border-radius: 16px;
+        border-left: 5px solid #ADFF2F;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        margin: 30px 0;
     }
 
-    /* Estadísticas */
-    .stat-box {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 15px;
-        border-radius: 10px;
+    .info-box h3 {
+        color: #1a1a1a;
+        margin-bottom: 10px;
+        font-size: 1.2em;
+    }
+
+    .info-box p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 0.95em;
+    }
+
+    /* Footer */
+    .footer-custom {
         text-align: center;
-        margin-bottom: 15px;
+        padding: 30px 0 40px 0;
+        color: #999;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 40px;
     }
 
-    .stat-number {
-        font-size: 1.8em;
-        font-weight: 700;
-        margin-bottom: 5px;
+    .footer-custom p {
+        font-size: 0.95em;
+        margin-bottom: 8px;
     }
 
-    .stat-label {
-        font-size: 0.9em;
-        opacity: 0.9;
+    /* Responsive */
+    @media (max-width: 1400px) {
+        .cards-grid {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
     }
 
-    /* Badge nuevo */
-    .badge-nuevo {
-        background: #FF1493;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-size: 0.8em;
-        font-weight: 700;
-        display: inline-block;
-        margin-bottom: 10px;
+    @media (max-width: 1024px) {
+        .cards-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
     }
 
-    /* Botón personalizado */
-    .btn-custom {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
-        padding: 10px 20px;
-        border-radius: 8px;
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        text-decoration: none;
+    @media (max-width: 768px) {
+        .cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .header-custom h1 {
+            font-size: 1.8em;
+        }
     }
 
-    .btn-custom:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-    }
-
-    /* Categoría badge */
-    .category-badge {
-        display: inline-block;
-        background: #667eea;
-        color: white;
-        padding: 5px 12px;
-        border-radius: 20px;
-        font-size: 0.75em;
-        font-weight: 600;
-        margin-bottom: 10px;
+    @media (max-width: 480px) {
+        .cards-grid {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
     }
 </style>
 """, unsafe_allow_html=True)
@@ -149,39 +239,32 @@ with st.sidebar:
     
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("Aplicaciones", "15", "100% Funcionales")
+        st.metric("Aplicaciones", "15")
     with col2:
-        st.metric("Categorías", "5", "Diferentes")
+        st.metric("Categorías", "5")
     
     col3, col4 = st.columns(2)
     with col3:
-        st.metric("Disponibilidad", "24/7", "Activo")
+        st.metric("Disponibilidad", "24/7")
     with col4:
-        st.metric("Estado", "100%", "Operativo")
+        st.metric("Estado", "100%")
     
     st.markdown("---")
     st.markdown("### 📚 Información")
     st.markdown("""
     Las mejores aplicaciones de **Inteligencia Artificial** construidas con **Streamlit**.
-    
-    Cada aplicación representa diferentes casos de uso de IA desde procesamiento de lenguaje natural hasta visión por computadora.
     """)
-    
-    st.markdown("---")
-    st.markdown("### 🔗 Enlaces")
-    st.markdown("[GitHub](https://github.com)")
-    st.markdown("[Documentación](https://docs.streamlit.io)")
 
-# ==================== HEADER PRINCIPAL ====================
+# ==================== HEADER ====================
 st.markdown("""
 <div class="header-custom">
-    <h1>🚀 Portafolio de Inteligencia Artificial</h1>
-    <p>Explora las mejores aplicaciones de IA con Streamlit</p>
+    <h1>🚀 Portafolio de IA</h1>
+    <p>Explora las mejores aplicaciones de Inteligencia Artificial</p>
 </div>
 """, unsafe_allow_html=True)
 
 # ==================== BÚSQUEDA Y FILTROS ====================
-col1, col2, col3 = st.columns([2, 1, 1])
+col1, col2 = st.columns([3, 1])
 
 with col1:
     search_term = st.text_input("🔍 Buscar aplicaciones...", "")
@@ -192,30 +275,21 @@ with col2:
         ["Todos", "Audio", "Visión", "Datos", "NLP"]
     )
 
-with col3:
-    sort_by = st.selectbox(
-        "Ordenar por",
-        ["Recientes", "Populares", "A-Z"]
-    )
-
 st.markdown("---")
 
 # ==================== INFO BOX ====================
 st.markdown("""
 <div class="info-box">
     <h3>📚 Sobre este Portafolio</h3>
-    <p>Este portafolio showcasea las mejores aplicaciones de inteligencia artificial construidas con Streamlit. 
-    Cada aplicación representa diferentes casos de uso de IA, desde procesamiento de lenguaje natural hasta 
-    visión por computadora y análisis de datos avanzado. Todas las aplicaciones están disponibles 24/7 y son completamente funcionales.</p>
+    <p>Este portafolio showcasea las mejores aplicaciones de inteligencia artificial construidas con Streamlit. Cada aplicación representa diferentes casos de uso de IA, desde procesamiento de lenguaje natural hasta visión por computadora y análisis de datos avanzado.</p>
 </div>
 """, unsafe_allow_html=True)
 
-# ==================== DATOS DE APLICACIONES (15 apps) ====================
+# ==================== DATOS DE 15 APLICACIONES ====================
 aplicaciones = [
     {
-        "id": 1,
         "titulo": "Conversión de Texto a Voz",
-        "descripcion": "Transforma textos en audio de alta calidad usando IA avanzada",
+        "descripcion": "Transforma textos en audio de alta calidad",
         "categoria": "Audio",
         "imagen": "txt_to_audio2.png",
         "enlace": "https://imultimod.streamlit.app/",
@@ -223,9 +297,8 @@ aplicaciones = [
         "color": "lime"
     },
     {
-        "id": 2,
         "titulo": "Conversión de Voz a Texto",
-        "descripcion": "Convierte audio en texto con precisión y en tiempo real",
+        "descripcion": "Convierte audio en texto con precisión",
         "categoria": "Audio",
         "imagen": "OIG8.jpg",
         "enlace": "https://traductorw.streamlit.app/",
@@ -233,9 +306,8 @@ aplicaciones = [
         "color": "butter"
     },
     {
-        "id": 3,
         "titulo": "Reconocimiento de Objetos",
-        "descripcion": "Detecta y clasifica objetos en imágenes usando YOLO",
+        "descripcion": "Detecta objetos en imágenes usando YOLO",
         "categoria": "Visión",
         "imagen": "txt_to_audio.png",
         "enlace": "https://yolov5cmc.streamlit.app/",
@@ -243,9 +315,8 @@ aplicaciones = [
         "color": "magenta"
     },
     {
-        "id": 4,
         "titulo": "Análisis de Imagen",
-        "descripcion": "Análisis visual avanzado con modelos de visión IA",
+        "descripcion": "Análisis visual avanzado con IA",
         "categoria": "Visión",
         "imagen": "OIG4.jpg",
         "enlace": "https://vision2-gpt4o.streamlit.app/",
@@ -253,9 +324,8 @@ aplicaciones = [
         "color": "violet"
     },
     {
-        "id": 5,
         "titulo": "Generación en Contexto (RAG)",
-        "descripcion": "Analiza documentos PDF y responde preguntas inteligentes",
+        "descripcion": "Analiza PDFs y responde preguntas",
         "categoria": "NLP",
         "imagen": "Chat_pdf.png",
         "enlace": "https://chatpdf-cc.streamlit.app/",
@@ -263,9 +333,8 @@ aplicaciones = [
         "color": "lime"
     },
     {
-        "id": 6,
         "titulo": "Análisis de Datos",
-        "descripcion": "Análisis inteligente de datos con agentes de IA",
+        "descripcion": "Análisis inteligente con agentes IA",
         "categoria": "Datos",
         "imagen": "data_analisis.png",
         "enlace": "https://dataagente.streamlit.app/",
@@ -273,9 +342,8 @@ aplicaciones = [
         "color": "butter"
     },
     {
-        "id": 7,
         "titulo": "Transcriptor Audio y Video",
-        "descripcion": "Transcribe automáticamente audio y video a texto",
+        "descripcion": "Transcribe automáticamente archivos",
         "categoria": "Audio",
         "imagen": "OIG3.jpg",
         "enlace": "https://transcript-whisper.streamlit.app/",
@@ -283,9 +351,8 @@ aplicaciones = [
         "color": "magenta"
     },
     {
-        "id": 8,
         "titulo": "Entrenando Modelos",
-        "descripcion": "Aprende a entrenar y usar tus propios modelos de IA",
+        "descripcion": "Entrena tus propios modelos de IA",
         "categoria": "Datos",
         "imagen": "OIG5.jpg",
         "enlace": "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/",
@@ -293,9 +360,8 @@ aplicaciones = [
         "color": "violet"
     },
     {
-        "id": 9,
         "titulo": "Sistema Ciberfísico",
-        "descripcion": "Interacción inteligente con el mundo físico",
+        "descripcion": "Interacción física con IA",
         "categoria": "Visión",
         "imagen": "OIG6.jpg",
         "enlace": "https://vision2-gpt4o.streamlit.app/",
@@ -303,9 +369,8 @@ aplicaciones = [
         "color": "lime"
     },
     {
-        "id": 10,
-        "titulo": "Procesamiento de NLP",
-        "descripcion": "Procesamiento avanzado de lenguaje natural",
+        "titulo": "Procesamiento NLP",
+        "descripcion": "Procesamiento de lenguaje natural",
         "categoria": "NLP",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
@@ -313,9 +378,8 @@ aplicaciones = [
         "color": "butter"
     },
     {
-        "id": 11,
         "titulo": "Síntesis de Audio",
-        "descripcion": "Crea audio sintético con voces naturales",
+        "descripcion": "Crea audio sintético con voces",
         "categoria": "Audio",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
@@ -323,9 +387,8 @@ aplicaciones = [
         "color": "magenta"
     },
     {
-        "id": 12,
         "titulo": "Detección de Anomalías",
-        "descripcion": "Identifica patrones anómalos en datos",
+        "descripcion": "Identifica patrones anómalos",
         "categoria": "Datos",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
@@ -333,9 +396,8 @@ aplicaciones = [
         "color": "violet"
     },
     {
-        "id": 13,
         "titulo": "Segmentación de Imágenes",
-        "descripcion": "Segmenta automáticamente elementos en imágenes",
+        "descripcion": "Segmenta elementos en imágenes",
         "categoria": "Visión",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
@@ -343,9 +405,8 @@ aplicaciones = [
         "color": "lime"
     },
     {
-        "id": 14,
         "titulo": "Análisis Sentimental",
-        "descripcion": "Analiza sentimientos en textos y redes sociales",
+        "descripcion": "Analiza sentimientos en textos",
         "categoria": "NLP",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
@@ -353,9 +414,8 @@ aplicaciones = [
         "color": "butter"
     },
     {
-        "id": 15,
         "titulo": "Predicción Temporal",
-        "descripcion": "Predice series temporales con modelos avanzados",
+        "descripcion": "Predice series temporales",
         "categoria": "Datos",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
@@ -367,7 +427,6 @@ aplicaciones = [
 # ==================== FILTRADO ====================
 apps_filtradas = aplicaciones
 
-# Filtrar por búsqueda
 if search_term:
     apps_filtradas = [
         app for app in apps_filtradas 
@@ -375,14 +434,13 @@ if search_term:
            search_term.lower() in app["descripcion"].lower()
     ]
 
-# Filtrar por categoría
 if categoria_filter != "Todos":
     apps_filtradas = [
         app for app in apps_filtradas 
         if app["categoria"] == categoria_filter
     ]
 
-# ==================== MOSTRAR CARDS (GRID 5 COLUMNAS) ====================
+# ==================== RENDERIZAR CARDS ====================
 color_classes = {
     "lime": "card-lime",
     "butter": "card-butter",
@@ -390,53 +448,33 @@ color_classes = {
     "violet": "card-violet"
 }
 
-# Crear grid de 5 columnas para 15 apps (3 filas de 5)
-cols = st.columns(5)
+# HTML de las cards
+html_cards = '<div class="cards-grid">'
 
-for idx, app in enumerate(apps_filtradas):
-    with cols[idx % 5]:
-        color_class = color_classes.get(app["color"], "card-lime")
-        
-        # Badge nuevo
-        if app["nuevo"]:
-            st.markdown('<span class="badge-nuevo">🆕 NUEVO</span>', unsafe_allow_html=True)
-        
-        # Card
-        st.markdown(f"""
-        <div class="card {color_class}">
-        """, unsafe_allow_html=True)
-        
-        # Categoría
-        st.markdown(f'<span class="category-badge">{app["categoria"]}</span>', unsafe_allow_html=True)
-        
-        # Título
-        st.markdown(f'<h3 style="color: #333; margin-bottom: 8px; font-size: 1.1em; line-height: 1.3;">{app["titulo"]}</h3>', unsafe_allow_html=True)
-        
-        # Descripción
-        st.markdown(f'<p style="color: #666; margin-bottom: 12px; font-size: 0.9em; line-height: 1.4;">{app["descripcion"]}</p>', unsafe_allow_html=True)
-        
-        # Imagen
-        try:
-            image = Image.open(app["imagen"])
-            st.image(image, use_column_width=True)
-        except:
-            st.info("📷 Imagen no disponible")
-        
-        # Botón
-        st.markdown(f"""
-        <a href="{app['enlace']}" target="_blank" style="text-decoration: none;">
-            <button class="btn-custom" style="width: 100%; cursor: pointer; font-size: 0.9em; padding: 9px 16px;">
-                🔗 Acceder
-            </button>
-        </a>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("</div>", unsafe_allow_html=True)
+for app in apps_filtradas:
+    color_class = color_classes.get(app["color"], "card-lime")
+    
+    html_cards += f"""
+    <div class="card {color_class}">
+        <img src="https://via.placeholder.com/400x140?text={app['titulo']}&bg=667eea&textColor=fff" 
+             class="card-image" alt="{app['titulo']}">
+        <div class="card-content">
+            {'<div class="badge-nuevo">🆕 NUEVO</div>' if app['nuevo'] else ''}
+            <div class="category-badge">{app['categoria']}</div>
+            <h3 class="card-title">{app['titulo']}</h3>
+            <p class="card-description">{app['descripcion']}</p>
+            <a href="{app['enlace']}" target="_blank" class="card-button">🔗 Acceder</a>
+        </div>
+    </div>
+    """
+
+html_cards += '</div>'
+
+st.markdown(html_cards, unsafe_allow_html=True)
 
 # ==================== FOOTER ====================
-st.markdown("---")
 st.markdown("""
-<div style="text-align: center; padding: 20px; color: #999;">
+<div class="footer-custom">
     <p>© 2024 Portafolio de Inteligencia Artificial | Powered by Streamlit</p>
     <p style="font-size: 0.85em;">Diseñado con ❤️ para exploradores de IA</p>
 </div>
