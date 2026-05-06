@@ -98,7 +98,7 @@ search = st.text_input("🔍 Buscar aplicación...")
 apps = [
     
     {"titulo":"Primera página","desc":"La IA identifica lo que escribes","img":get_base64("gato.png"),"url":"https://intro-isv2-del2s74hdlvmnh4d3xygyw.streamlit.app/","color":"lime"},
-    {"titulo":"YOLO Objetos","desc":"Detecta objetos","img":get_base64("txt_to_audio.png"),"url":"https://yolov5cmc.streamlit.app/","color":"butter"},
+    {"titulo":"Análisis de texto","desc":"La IA analiza el texto que cargues o escribas y te filtra algunos datos","img":get_base64("analisistexto.png"),"url":"https://isv-bit-analisis-de-texto-app-pxurpk.streamlit.app/","color":"butter"},
     {"titulo":"Análisis de Datos","desc":"Analiza datos con IA","img":get_base64("data_analisis.png"),"url":"https://dataagente.streamlit.app/","color":"blue"},
     {"titulo":"Transcriptor","desc":"Audio/video a texto","img":get_base64("OIG3.jpg"),"url":"https://transcript-whisper.streamlit.app/","color":"violet"},
     {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
