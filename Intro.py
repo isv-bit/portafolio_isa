@@ -96,11 +96,12 @@ search = st.text_input("🔍 Buscar aplicación...")
 # DATA
 # =====================================================
 apps = [
-    {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
-    {"titulo":"Voz a Texto","desc":"Transcribe audio","img":get_base64("OIG8.jpg"),"url":"https://traductorw.streamlit.app/","color":"lime"},
+    
+    {"titulo":"Primera página","desc":"La IA identifica lo que escribes","img":get_base64("gato.png"),"url":"https://intro-isv2-del2s74hdlvmnh4d3xygyw.streamlit.app/","color":"lime"},
     {"titulo":"YOLO Objetos","desc":"Detecta objetos","img":get_base64("txt_to_audio.png"),"url":"https://yolov5cmc.streamlit.app/","color":"butter"},
     {"titulo":"Análisis de Datos","desc":"Analiza datos con IA","img":get_base64("data_analisis.png"),"url":"https://dataagente.streamlit.app/","color":"blue"},
     {"titulo":"Transcriptor","desc":"Audio/video a texto","img":get_base64("OIG3.jpg"),"url":"https://transcript-whisper.streamlit.app/","color":"violet"},
+    {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
 ]
 
 # =====================================================
