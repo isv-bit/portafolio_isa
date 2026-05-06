@@ -149,9 +149,9 @@ with st.sidebar:
     
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("Aplicaciones", "20", "100% Funcionales")
+        st.metric("Aplicaciones", "15", "100% Funcionales")
     with col2:
-        st.metric("Categorías", "8", "Diferentes")
+        st.metric("Categorías", "5", "Diferentes")
     
     col3, col4 = st.columns(2)
     with col3:
@@ -210,7 +210,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ==================== DATOS DE APLICACIONES ====================
+# ==================== DATOS DE APLICACIONES (15 apps) ====================
 aplicaciones = [
     {
         "id": 1,
@@ -304,9 +304,9 @@ aplicaciones = [
     },
     {
         "id": 10,
-        "titulo": "Aplicación 10",
-        "descripcion": "Descripción de la aplicación 10",
-        "categoria": "Datos",
+        "titulo": "Procesamiento de NLP",
+        "descripcion": "Procesamiento avanzado de lenguaje natural",
+        "categoria": "NLP",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
         "nuevo": False,
@@ -314,8 +314,8 @@ aplicaciones = [
     },
     {
         "id": 11,
-        "titulo": "Aplicación 11",
-        "descripcion": "Descripción de la aplicación 11",
+        "titulo": "Síntesis de Audio",
+        "descripcion": "Crea audio sintético con voces naturales",
         "categoria": "Audio",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
@@ -324,9 +324,9 @@ aplicaciones = [
     },
     {
         "id": 12,
-        "titulo": "Aplicación 12",
-        "descripcion": "Descripción de la aplicación 12",
-        "categoria": "Visión",
+        "titulo": "Detección de Anomalías",
+        "descripcion": "Identifica patrones anómalos en datos",
+        "categoria": "Datos",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
         "nuevo": False,
@@ -334,19 +334,19 @@ aplicaciones = [
     },
     {
         "id": 13,
-        "titulo": "Aplicación 13",
-        "descripcion": "Descripción de la aplicación 13",
-        "categoria": "NLP",
+        "titulo": "Segmentación de Imágenes",
+        "descripcion": "Segmenta automáticamente elementos en imágenes",
+        "categoria": "Visión",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
-        "nuevo": False,
+        "nuevo": True,
         "color": "lime"
     },
     {
         "id": 14,
-        "titulo": "Aplicación 14",
-        "descripcion": "Descripción de la aplicación 14",
-        "categoria": "Datos",
+        "titulo": "Análisis Sentimental",
+        "descripcion": "Analiza sentimientos en textos y redes sociales",
+        "categoria": "NLP",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
         "nuevo": False,
@@ -354,63 +354,13 @@ aplicaciones = [
     },
     {
         "id": 15,
-        "titulo": "Aplicación 15",
-        "descripcion": "Descripción de la aplicación 15",
-        "categoria": "Audio",
-        "imagen": "txt_to_audio2.png",
-        "enlace": "#",
-        "nuevo": False,
-        "color": "magenta"
-    },
-    {
-        "id": 16,
-        "titulo": "Aplicación 16",
-        "descripcion": "Descripción de la aplicación 16",
-        "categoria": "Visión",
-        "imagen": "txt_to_audio2.png",
-        "enlace": "#",
-        "nuevo": False,
-        "color": "violet"
-    },
-    {
-        "id": 17,
-        "titulo": "Aplicación 17",
-        "descripcion": "Descripción de la aplicación 17",
-        "categoria": "NLP",
-        "imagen": "txt_to_audio2.png",
-        "enlace": "#",
-        "nuevo": False,
-        "color": "lime"
-    },
-    {
-        "id": 18,
-        "titulo": "Aplicación 18",
-        "descripcion": "Descripción de la aplicación 18",
+        "titulo": "Predicción Temporal",
+        "descripcion": "Predice series temporales con modelos avanzados",
         "categoria": "Datos",
         "imagen": "txt_to_audio2.png",
         "enlace": "#",
         "nuevo": False,
-        "color": "butter"
-    },
-    {
-        "id": 19,
-        "titulo": "Aplicación 19",
-        "descripcion": "Descripción de la aplicación 19",
-        "categoria": "Audio",
-        "imagen": "txt_to_audio2.png",
-        "enlace": "#",
-        "nuevo": False,
         "color": "magenta"
-    },
-    {
-        "id": 20,
-        "titulo": "Aplicación 20",
-        "descripcion": "Descripción de la aplicación 20",
-        "categoria": "Visión",
-        "imagen": "txt_to_audio2.png",
-        "enlace": "#",
-        "nuevo": True,
-        "color": "violet"
     }
 ]
 
@@ -432,8 +382,7 @@ if categoria_filter != "Todos":
         if app["categoria"] == categoria_filter
     ]
 
-# ==================== MOSTRAR CARDS ====================
-cols = st.columns(4)
+# ==================== MOSTRAR CARDS (GRID 5 COLUMNAS) ====================
 color_classes = {
     "lime": "card-lime",
     "butter": "card-butter",
@@ -441,8 +390,11 @@ color_classes = {
     "violet": "card-violet"
 }
 
+# Crear grid de 5 columnas para 15 apps (3 filas de 5)
+cols = st.columns(5)
+
 for idx, app in enumerate(apps_filtradas):
-    with cols[idx % 4]:
+    with cols[idx % 5]:
         color_class = color_classes.get(app["color"], "card-lime")
         
         # Badge nuevo
@@ -458,10 +410,10 @@ for idx, app in enumerate(apps_filtradas):
         st.markdown(f'<span class="category-badge">{app["categoria"]}</span>', unsafe_allow_html=True)
         
         # Título
-        st.markdown(f'<h3 style="color: #333; margin-bottom: 10px;">{app["titulo"]}</h3>', unsafe_allow_html=True)
+        st.markdown(f'<h3 style="color: #333; margin-bottom: 8px; font-size: 1.1em; line-height: 1.3;">{app["titulo"]}</h3>', unsafe_allow_html=True)
         
         # Descripción
-        st.markdown(f'<p style="color: #666; margin-bottom: 15px; font-size: 0.95em;">{app["descripcion"]}</p>', unsafe_allow_html=True)
+        st.markdown(f'<p style="color: #666; margin-bottom: 12px; font-size: 0.9em; line-height: 1.4;">{app["descripcion"]}</p>', unsafe_allow_html=True)
         
         # Imagen
         try:
@@ -473,8 +425,8 @@ for idx, app in enumerate(apps_filtradas):
         # Botón
         st.markdown(f"""
         <a href="{app['enlace']}" target="_blank" style="text-decoration: none;">
-            <button class="btn-custom" style="width: 100%; cursor: pointer;">
-                🔗 Acceder a la App
+            <button class="btn-custom" style="width: 100%; cursor: pointer; font-size: 0.9em; padding: 9px 16px;">
+                🔗 Acceder
             </button>
         </a>
         """, unsafe_allow_html=True)
