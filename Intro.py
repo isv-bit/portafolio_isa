@@ -25,8 +25,6 @@ st.markdown("""
     transition: 0.35s;
     margin-bottom: 30px;
     color: white;
-    display: flex;
-    flex-direction: column;
 }
 
 .card:hover {
@@ -34,20 +32,17 @@ st.markdown("""
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-/* IMAGEN */
 .card img {
     width: 100%;
     height: 160px;
     object-fit: cover;
 }
 
-/* CONTENIDO */
 .card-content {
     padding: 16px;
     text-align: center;
 }
 
-/* TEXTO */
 .card-title {
     font-weight: bold;
     font-size: 16px;
@@ -60,7 +55,6 @@ st.markdown("""
     margin-bottom: 14px;
 }
 
-/* BOTÓN */
 .btn {
     background: rgba(255,255,255,0.2);
     padding: 9px 14px;
@@ -99,12 +93,14 @@ st.write("Explora aplicaciones de IA con diseño moderno y organizado.")
 search = st.text_input("🔍 Buscar aplicación...")
 
 # =====================================================
-# DATA (con base64)
+# DATA
 # =====================================================
 apps = [
     {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
     {"titulo":"Voz a Texto","desc":"Transcribe audio","img":get_base64("OIG8.jpg"),"url":"https://traductorw.streamlit.app/","color":"lime"},
     {"titulo":"YOLO Objetos","desc":"Detecta objetos","img":get_base64("txt_to_audio.png"),"url":"https://yolov5cmc.streamlit.app/","color":"butter"},
+    {"titulo":"Análisis de Datos","desc":"Analiza datos con IA","img":get_base64("data_analisis.png"),"url":"https://dataagente.streamlit.app/","color":"blue"},
+    {"titulo":"Transcriptor","desc":"Audio/video a texto","img":get_base64("OIG3.jpg"),"url":"https://transcript-whisper.streamlit.app/","color":"violet"},
 ]
 
 # =====================================================
@@ -122,21 +118,20 @@ cols = st.columns(3, gap="large")
 
 for i, app in enumerate(apps_filtradas):
     with cols[i % 3]:
+
         st.markdown(f"""
-        <div class="card {app['color']}">
+<div class="card {app['color']}">
 
-            <!-- IMAGEN -->
-            <img src="data:image/jpg;base64,{app['img']}">
+<img src="data:image/jpg;base64,{app['img']}">
 
-            <!-- CONTENIDO -->
-            <div class="card-content">
-                <div class="card-title">{app['titulo']}</div>
-                <div class="card-desc">{app['desc']}</div>
-                <a href="{app['url']}" target="_blank" class="btn">Ir a la app</a>
-            </div>
+<div class="card-content">
+<div class="card-title">{app['titulo']}</div>
+<div class="card-desc">{app['desc']}</div>
+<a href="{app['url']}" target="_blank" class="btn">Ir a la app</a>
+</div>
 
-        </div>
-        """, unsafe_allow_html=True)
+</div>
+""", unsafe_allow_html=True)
 
 # =====================================================
 # SIDEBAR
