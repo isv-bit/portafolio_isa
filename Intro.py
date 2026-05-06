@@ -6,28 +6,31 @@ import streamlit as st
 st.set_page_config(page_title="Portafolio IA", layout="wide")
 
 # =====================================================
-# ESTILOS (COLORES LLAMATIVOS)
+# ESTILOS MEJORADOS (ESPACIADO + DISEÑO)
 # =====================================================
 st.markdown("""
 <style>
 
-/* FONDO GENERAL */
-body {
-    background: linear-gradient(135deg, #0f172a, #1e293b);
+/* CONTENEDOR GENERAL */
+.block-container {
+    padding-top: 2rem;
 }
 
-/* CARD BASE */
+/* GRID MÁS LIMPIO */
+.row-widget.stHorizontal {
+    gap: 30px;
+}
+
+/* CARD */
 .card {
     border-radius: 18px;
-    padding: 16px;
+    padding: 18px;
     text-align: center;
     transition: all 0.35s ease;
     color: white;
-    position: relative;
-    overflow: hidden;
+    margin-bottom: 25px;
 }
 
-/* EFECTO HOVER */
 .card:hover {
     transform: translateY(-8px) scale(1.03);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
@@ -36,7 +39,7 @@ body {
 /* IMAGEN */
 .card img {
     border-radius: 12px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 /* TEXTO */
@@ -49,19 +52,18 @@ body {
 .card-desc {
     font-size: 13px;
     opacity: 0.9;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 /* BOTÓN */
 .btn {
     background: rgba(255,255,255,0.2);
-    padding: 8px 14px;
+    padding: 9px 14px;
     border-radius: 10px;
     text-decoration: none;
     color: white;
     font-size: 13px;
     transition: 0.3s;
-    display: inline-block;
 }
 
 .btn:hover {
@@ -69,33 +71,14 @@ body {
     color: black;
 }
 
-/* 🎨 COLORES POR CARD */
-.magenta {
-    background: linear-gradient(135deg, #ff0080, #ff4da6);
-}
+/* COLORES */
+.magenta { background: linear-gradient(135deg, #ff0080, #ff4da6); }
+.lime { background: linear-gradient(135deg, #a8ff00, #3cff00); color:black;}
+.butter { background: linear-gradient(135deg, #fff200, #ffd000); color:black;}
+.blue { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+.violet { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
 
-.lime {
-    background: linear-gradient(135deg, #a8ff00, #3cff00);
-    color: black;
-}
-
-.butter {
-    background: linear-gradient(135deg, #fff200, #ffd000);
-    color: black;
-}
-
-.blue {
-    background: linear-gradient(135deg, #00c6ff, #0072ff);
-}
-
-.violet {
-    background: linear-gradient(135deg, #8e2de2, #4a00e0);
-}
-
-/* HEADER */
-h1 {
-    color: white !important;
-}
+h1 { color: white !important; }
 
 </style>
 """, unsafe_allow_html=True)
@@ -104,7 +87,7 @@ h1 {
 # HEADER
 # =====================================================
 st.title("🚀 Portafolio de Inteligencia Artificial")
-st.write("Explora aplicaciones de IA con un diseño moderno, colorido y visualmente atractivo.")
+st.write("Explora aplicaciones de IA con diseño moderno y organizado.")
 
 # =====================================================
 # BUSCADOR
@@ -112,18 +95,31 @@ st.write("Explora aplicaciones de IA con un diseño moderno, colorido y visualme
 search = st.text_input("🔍 Buscar aplicación...")
 
 # =====================================================
-# DATA (CON COLORES)
+# DATA (19 APPS)
 # =====================================================
 apps = [
+    # ORIGINALES
     {"titulo":"Texto a Voz","desc":"Convierte texto en audio","img":"txt_to_audio2.png","url":"https://imultimod.streamlit.app/","color":"magenta"},
     {"titulo":"Voz a Texto","desc":"Transcribe audio","img":"OIG8.jpg","url":"https://traductorw.streamlit.app/","color":"lime"},
     {"titulo":"YOLO Objetos","desc":"Detecta objetos","img":"txt_to_audio.png","url":"https://yolov5cmc.streamlit.app/","color":"butter"},
     {"titulo":"Análisis de Datos","desc":"Analiza datos con IA","img":"data_analisis.png","url":"https://dataagente.streamlit.app/","color":"blue"},
-    {"titulo":"Transcriptor","desc":"Audio y video a texto","img":"OIG3.jpg","url":"https://transcript-whisper.streamlit.app/","color":"violet"},
+    {"titulo":"Transcriptor","desc":"Audio/video a texto","img":"OIG3.jpg","url":"https://transcript-whisper.streamlit.app/","color":"violet"},
     {"titulo":"RAG PDF","desc":"Consulta documentos","img":"Chat_pdf.png","url":"https://chatpdf-cc.streamlit.app/","color":"magenta"},
     {"titulo":"Visión IA","desc":"Análisis de imágenes","img":"OIG4.jpg","url":"https://vision2-gpt4o.streamlit.app/","color":"blue"},
     {"titulo":"Sistema Ciberfísico","desc":"IA + mundo físico","img":"OIG6.jpg","url":"https://vision2-gpt4o.streamlit.app/","color":"lime"},
-    {"titulo":"Entrenamiento","desc":"Entrena modelos IA","img":"OIG5.jpg","url":"https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/","color":"violet"},
+    {"titulo":"Entrenamiento","desc":"Modelos IA","img":"OIG5.jpg","url":"https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/","color":"violet"},
+
+    # NUEVAS 10
+    {"titulo":"Chat IA","desc":"Asistente inteligente","img":"txt_to_audio2.png","url":"#","color":"magenta"},
+    {"titulo":"Resumen IA","desc":"Resume textos","img":"txt_to_audio2.png","url":"#","color":"butter"},
+    {"titulo":"Traducción IA","desc":"Traduce idiomas","img":"txt_to_audio2.png","url":"#","color":"blue"},
+    {"titulo":"Clasificación","desc":"Clasifica datos","img":"txt_to_audio2.png","url":"#","color":"lime"},
+    {"titulo":"Generador Imagen","desc":"Crea imágenes","img":"txt_to_audio2.png","url":"#","color":"violet"},
+    {"titulo":"Detector Spam","desc":"Filtra mensajes","img":"txt_to_audio2.png","url":"#","color":"magenta"},
+    {"titulo":"Predicción","desc":"Predice valores","img":"txt_to_audio2.png","url":"#","color":"blue"},
+    {"titulo":"OCR IA","desc":"Lee imágenes","img":"txt_to_audio2.png","url":"#","color":"butter"},
+    {"titulo":"Recomendador","desc":"Sugiere contenido","img":"txt_to_audio2.png","url":"#","color":"lime"},
+    {"titulo":"Audio IA","desc":"Procesa sonido","img":"txt_to_audio2.png","url":"#","color":"violet"},
 ]
 
 # =====================================================
@@ -135,9 +131,9 @@ apps_filtradas = [
 ]
 
 # =====================================================
-# GRID
+# GRID (MEJOR DISTRIBUCIÓN)
 # =====================================================
-cols = st.columns(3)
+cols = st.columns(3, gap="large")
 
 for i, app in enumerate(apps_filtradas):
     with cols[i % 3]:
@@ -155,6 +151,5 @@ for i, app in enumerate(apps_filtradas):
 # =====================================================
 with st.sidebar:
     st.title("📊 Info")
-    st.write("Aplicaciones de IA organizadas en cards modernas.")
     st.metric("Apps", len(apps))
     st.metric("Estado", "Activo")
