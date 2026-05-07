@@ -112,11 +112,7 @@ apps = [
     {"titulo":"TABLERO INTELIGENTE","desc":"Es una app que analiza dibujos con IA y genera descripciones e historias.","img":get_base64("draw.jpg"),"url":"https://histinfisaa.streamlit.app/","color":"blue"},
     {"titulo":"RECONOCIMIENTO DE DIGITOS","desc":"Esta app usa una red neuronal para reconocer dígitos escritos a mano.","img":get_base64("numero.jpg"),"url":"https://handwisaa.streamlit.app/","color":"violet"},
     {"titulo":"DE TEXTO A AUDIO","desc":"Es una aplicación que convierte texto en audio para escuchar cuentos usando inteligencia artificial.","img":get_base64("audio.jpg"),"url":"https://isatextoaudio.streamlit.app/","color":"magenta"},
-    {"titulo":"ANÁLISIS DE IMAGEN","desc":"La IA describe de forma inteligente la imagen que subes","img":get_base64("analisisimagen.jpg"),"url":"https://visionapp-isa.streamlit.app/","color":"lime"},
-    {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN INGLÉS","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-idf-isabel.streamlit.app/","color":"butter"},
-    {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN ESPAÑOL","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-espanol.streamlit.app/","color":"blue"},
-    {"titulo":"ANÁLISIS DE SENTIMIENTOS","desc":"Aplicación que analiza el sentimiento de un texto y determina si es positivo, negativo o neutral.","img":get_base64("sentimental.jpg"),"url":"https://sentimenta-isa.streamlit.app/","color":"violet"},
-    {"titulo":"WORD CLOUD","desc":"Esta aplicación genera una nube de palabras a partir de cualquier texto,resaltando visualmente las palabras más frecuentes.","img":get_base64("cloud.jpg"),"url":"https://wordcloudisa.streamlit.app/","color":"magenta"},
+
 ]
 
 # =====================================================
