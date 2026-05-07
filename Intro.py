@@ -110,7 +110,7 @@ apps = [
      {"titulo":"MQTT CONTROL DASHBOARD","desc":"Es un dashboard web que controla dispositivos IoT en tiempo real usando MQTT","img":get_base64("MQTT.jpg"),"url":"https://sendcmqttcontrol-isa.streamlit.app/","color":"lime"},
     {"titulo":"RECONOCIMIENTO ÓPTICO DE CARACTERES","desc":"Es una aplicación web que usa la cámara para reconocer y extraer texto de imágenes mediante OCR.","img":get_base64("foto.jpg"),"url":"https://reconoc-isa.streamlit.app/","color":"butter"},
     {"titulo":"TABLERO INTELIGENTE","desc":"Es una app que analiza dibujos con IA y genera descripciones e historias.","img":get_base64("draw.jpg"),"url":"https://histinfisaa.streamlit.app/","color":"blue"},
-    {"titulo":"TRADUCTOR","desc":"Aplicación que convierte voz o texto de un idioma a otro de forma rápida y automática.","img":get_base64("traductor.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
+    {"titulo":"RECONOCIMIENTO DE DIGITOS","desc":"Esta app usa una red neuronal para reconocer dígitos escritos a mano.","img":get_base64("numero.jpg"),"url":"https://handwisaa.streamlit.app/","color":"violet"},
     {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
     {"titulo":"ANÁLISIS DE IMAGEN","desc":"La IA describe de forma inteligente la imagen que subes","img":get_base64("analisisimagen.jpg"),"url":"https://visionapp-isa.streamlit.app/","color":"lime"},
     {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN INGLÉS","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-idf-isabel.streamlit.app/","color":"butter"},
