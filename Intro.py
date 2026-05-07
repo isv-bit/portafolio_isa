@@ -109,7 +109,7 @@ apps = [
     {"titulo":"WORD CLOUD","desc":"Esta aplicación genera una nube de palabras a partir de cualquier texto,resaltando visualmente las palabras más frecuentes.","img":get_base64("cloud.jpg"),"url":"https://wordcloudisa.streamlit.app/","color":"magenta"},
      {"titulo":"MQTT CONTROL DASHBOARD","desc":"Es un dashboard web que controla dispositivos IoT en tiempo real usando MQTT","img":get_base64("MQTT.jpg"),"url":"https://sendcmqttcontrol-isa.streamlit.app/","color":"lime"},
     {"titulo":"RECONOCIMIENTO ÓPTICO DE CARACTERES","desc":"Es una aplicación web que usa la cámara para reconocer y extraer texto de imágenes mediante OCR.","img":get_base64("foto.jpg"),"url":"https://reconoc-isa.streamlit.app/","color":"butter"},
-    {"titulo":"ANÁLISIS PDF","desc":"Analiza datos con IA de un archivo PDF","img":get_base64("pdf.jpg"),"url":"https://chatpdf-isa.streamlit.app/","color":"blue"},
+    {"titulo":"TABLERO INTELIGENTE","desc":"Es una app que analiza dibujos con IA y genera descripciones e historias.","img":get_base64("draw.jpg"),"url":"https://histinfisaa.streamlit.app/","color":"blue"},
     {"titulo":"TRADUCTOR","desc":"Aplicación que convierte voz o texto de un idioma a otro de forma rápida y automática.","img":get_base64("traductor.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
     {"titulo":"CONTROL POR VOZ","desc":"La IA transcribe lo que dices","img":get_base64("controlvoz.jpg"),"url":"https://controlvoz-isa.streamlit.app/","color":"magenta"},
     {"titulo":"ANÁLISIS DE IMAGEN","desc":"La IA describe de forma inteligente la imagen que subes","img":get_base64("analisisimagen.jpg"),"url":"https://visionapp-isa.streamlit.app/","color":"lime"},
