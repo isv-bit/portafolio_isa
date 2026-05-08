@@ -107,11 +107,15 @@ apps = [
     {"titulo":"DEMO PREGUNTAS Y RESPUESTAS EN ESPAÑOL","desc":"Aplicación que compara textos usando TF-IDF para encontrar el documento más relevante según una pregunta.","img":get_base64("pyr.jpg"),"url":"https://tf-espanol.streamlit.app/","color":"blue"},
     {"titulo":"ANÁLISIS DE SENTIMIENTOS","desc":"Aplicación que analiza el sentimiento de un texto y determina si es positivo, negativo o neutral.","img":get_base64("sentimental.jpg"),"url":"https://sentimenta-isa.streamlit.app/","color":"violet"},
     {"titulo":"WORD CLOUD","desc":"Esta aplicación genera una nube de palabras a partir de cualquier texto,resaltando visualmente las palabras más frecuentes.","img":get_base64("cloud.jpg"),"url":"https://wordcloudisa.streamlit.app/","color":"magenta"},
-     {"titulo":"MQTT CONTROL DASHBOARD","desc":"Es un dashboard web que controla dispositivos IoT en tiempo real usando MQTT","img":get_base64("MQTT.jpg"),"url":"https://sendcmqttcontrol-isa.streamlit.app/","color":"lime"},
+    {"titulo":"MQTT CONTROL DASHBOARD","desc":"Es un dashboard web que controla dispositivos IoT en tiempo real usando MQTT","img":get_base64("MQTT.jpg"),"url":"https://sendcmqttcontrol-isa.streamlit.app/","color":"lime"},
     {"titulo":"RECONOCIMIENTO ÓPTICO DE CARACTERES","desc":"Es una aplicación web que usa la cámara para reconocer y extraer texto de imágenes mediante OCR.","img":get_base64("foto.jpg"),"url":"https://reconoc-isa.streamlit.app/","color":"butter"},
     {"titulo":"TABLERO INTELIGENTE","desc":"Es una app que analiza dibujos con IA y genera descripciones e historias.","img":get_base64("draw.jpg"),"url":"https://histinfisaa.streamlit.app/","color":"blue"},
     {"titulo":"RECONOCIMIENTO DE DIGITOS","desc":"Esta app usa una red neuronal para reconocer dígitos escritos a mano.","img":get_base64("numero.jpg"),"url":"https://handwisaa.streamlit.app/","color":"violet"},
     {"titulo":"DE TEXTO A AUDIO","desc":"Es una aplicación que convierte texto en audio para escuchar cuentos usando inteligencia artificial.","img":get_base64("audio.jpg"),"url":"https://isatextoaudio.streamlit.app/","color":"magenta"},
+    {"titulo":"DETECCIÓN DE OBJETOS EN IMÁGENES","desc":"Aplicación de inteligencia artificial que detecta objetos en tiempo real usando YOLOv5 y Streamlit.","img":get_base64("foto.jpg"),"url":"https://yoloisa.streamlit.app/","color":"butter"},
+    {"titulo":"ANÁLISIS PDF","desc":"Analiza datos con IA de un archivo PDF","img":get_base64("pdf.jpg"),"url":"https://chatpdf-isa.streamlit.app/","color":"blue"},
+    {"titulo":"TRADUCTOR","desc":"Aplicación que convierte voz o texto de un idioma a otro de forma rápida y automática.","img":get_base64("traductor.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
+    
 
 ]
 
