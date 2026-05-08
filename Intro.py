@@ -112,8 +112,8 @@ apps = [
     {"titulo":"TABLERO INTELIGENTE","desc":"Es una app que analiza dibujos con IA y genera descripciones e historias.","img":get_base64("draw.jpg"),"url":"https://histinfisaa.streamlit.app/","color":"blue"},
     {"titulo":"RECONOCIMIENTO DE DIGITOS","desc":"Esta app usa una red neuronal para reconocer dígitos escritos a mano.","img":get_base64("numero.jpg"),"url":"https://handwisaa.streamlit.app/","color":"violet"},
     {"titulo":"DE TEXTO A AUDIO","desc":"Es una aplicación que convierte texto en audio para escuchar cuentos usando inteligencia artificial.","img":get_base64("audio.jpg"),"url":"https://isatextoaudio.streamlit.app/","color":"magenta"},
-    {"titulo":"DETECCIÓN DE OBJETOS EN IMÁGENES","desc":"Aplicación de inteligencia artificial que detecta objetos en tiempo real usando YOLOv5 y Streamlit.","img":get_base64("foto.jpg"),"url":"https://yoloisa.streamlit.app/","color":"butter"},
-    {"titulo":"ANÁLISIS PDF","desc":"Analiza datos con IA de un archivo PDF","img":get_base64("pdf.jpg"),"url":"https://chatpdf-isa.streamlit.app/","color":"blue"},
+    {"titulo":"DETECCIÓN DE OBJETOS EN IMÁGENES","desc":"Aplicación de inteligencia artificial que detecta objetos en tiempo real usando YOLOv5 y Streamlit.","img":get_base64("deteccion.jpg"),"url":"https://yoloisa.streamlit.app/","color":"butter"},
+    {"titulo":"ANÁLISIS PDF","desc":"Aplicación de inteligencia artificial que reconoce imágenes en tiempo real usando Streamlit y Keras.","img":get_base64("gestos.jpg"),"url":"https://dgestos-isa.streamlit.app/","color":"blue"},
     {"titulo":"TRADUCTOR","desc":"Aplicación que convierte voz o texto de un idioma a otro de forma rápida y automática.","img":get_base64("traductor.jpg"),"url":"https://traductor-isa.streamlit.app/","color":"violet"},
     
 
